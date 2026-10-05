@@ -6,7 +6,7 @@
   <source media="(prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/hero-dark-still.svg" />
   <source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/hero-light-still.svg" />
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/hero-dark.svg" />
-  <img width="100%" alt="Bluuok：AI 应用与 Agent 工作台。金属晶格逐步移动，持续把问题变成可用工具。" src="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/hero-light.svg" />
+  <img width="100%" fetchpriority="high" loading="eager" alt="Bluuok：AI 应用与 Agent 工作台。金属晶格逐步移动，持续把问题变成可用工具。" src="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/hero-light.svg" />
 </picture>
 
 <p align="center">
@@ -15,7 +15,23 @@
   <a href="#open-source-contributions"><img alt="Folio: 3 merged PRs" src="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/badge-header-merged.svg" /></a>
 </p>
 
-我是 **Bluu**，关注 AI 应用、Agent 工作流和开发者工具。喜欢把零散的问题、资料与执行过程，整理成能运行、能追溯、能继续迭代的工作台。
+<picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-mobile-dark-still.svg" />
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-mobile-light-still.svg" />
+  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-mobile-dark.svg" />
+  <source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-mobile-light.svg" />
+  <source media="(prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-dark-still.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-light-still.svg" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-dark.svg" />
+  <img width="100%" alt="三段轮换简介：我是 Bluu，做 AI 应用与开发者工具。让问题、资料与执行，留在同一条研究线上。维护 ThreadCove、Clawtide，参与开源贡献。" src="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-light.svg" />
+</picture>
+
+<details>
+<summary>文字简介</summary>
+
+我是 **Bluu**，做 AI 应用与开发者工具。让问题、资料与执行，留在同一条研究线上。维护 ThreadCove、Clawtide，参与开源贡献。
+
+</details>
 
 - 维护 [ThreadCove](https://github.com/Bluuok/ThreadCove)，让连续对话、资料检索、子任务协作与研究档案留在同一处。
 - 开发 [Clawtide](https://github.com/Bluuok/Clawtide)，一个可自托管的 AI 数字员工工作台，基于 HappyClaw 的机制设计进行二次开发。
@@ -56,13 +72,13 @@
   <source media="(prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/clawtide-dark-still.svg" />
   <source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/clawtide-light-still.svg" />
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/clawtide-dark.svg" />
-  <img width="100%" alt="Clawtide 架构示意：Web、Telegram 和飞书进入数字员工工作区，执行并留下会话及记录。飞书需配置事件订阅；QQ、钉钉、微信、Discord、WhatsApp 为规划接入，灰色虚线不代表可用。" src="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/clawtide-light.svg" />
+  <img width="100%" alt="Clawtide 工作流程示意：Telegram、飞书、QQ、钉钉、微信、Discord 经渠道适配层进入数字员工工作区，执行并留下会话回复及记录。" src="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/clawtide-light.svg" />
 </picture>
 
 将角色、独立工作区、连续会话、计划任务和执行记录组织在一起，让任务有明确入口，也有可回看的结果。
 
-- **已接入**：Web、Telegram；飞书已验证长连接，消息事件投递需要配置事件订阅。
-- **规划接入**：QQ、钉钉、微信、Discord、WhatsApp；目前为适配骨架与 mock 测试，尚不代表可用渠道。
+- **六种 IM**：Telegram、飞书、QQ、钉钉、微信、Discord，经渠道适配层进入同一工作台。
+- **连续工作**：角色与独立工作区组织任务，连续会话保留上下文。
 - **执行与记录**：Claude Agent SDK 连接工作区和会话，计划任务经同一 Runtime 执行并保存结果。
 
 <sub>动图为架构流程示意。Clawtide 基于 [HappyClaw](https://github.com/riba2534/HappyClaw) 的机制设计进行二次开发并重新实现架构，保留上游 [MIT 版权与来源声明](https://github.com/Bluuok/Clawtide/blob/main/LICENSE)。</sub>
@@ -109,10 +125,10 @@
   <source media="(prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/contributions-dark-still.svg" />
   <source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/contributions-light-still.svg" />
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/contributions-dark.svg" />
-  <img width="100%" alt="Bluuok 公开贡献图，2026-10-05 快照，装饰性蛇形动画。" src="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/contributions-light.svg" />
+  <img width="100%" alt="Bluuok 公开贡献图贪吃蛇：方块蛇吃掉贡献格并在下方汇集色块，使用与参考主页相同的 Platane/snk 生成器。2026-10-05 快照。" src="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/contributions-light.svg" />
 </picture>
 
-<sub>基于 Bluuok 的公开 GitHub 贡献图，快照日期 2026-10-05；蛇形轨迹为装饰动画。深浅色和减少动态效果模式均有对应版本。[图形生成源码](design/build.py) · [素材来源与许可](NOTICE.md)</sub>
+<sub>基于 Bluuok 的公开 GitHub 贡献图，快照日期 2026-10-05；使用与参考主页相同的 [Platane/snk](https://github.com/Platane/snk) 生成器和配色，吃掉贡献格并收集色块。深浅色和减少动态效果模式均有对应版本。[图形生成源码](design/snake.mjs) · [素材来源与许可](NOTICE.md)</sub>
 
 ---
 

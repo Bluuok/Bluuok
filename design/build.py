@@ -21,6 +21,7 @@ Requires: pip install uharfbuzz fonttools
 from __future__ import annotations
 
 import math
+from decimal import Decimal
 from pathlib import Path
 
 import svgtext as ST
@@ -63,7 +64,17 @@ def fmt(v: float) -> str:
 
 
 def pts_d(points) -> str:
-    return "M" + " L".join(f"{fmt(x)} {fmt(y)}" for x, y in points)
+    # Keep the original 0.1px positions exactly, but encode shorter deltas.
+    # This changes serialization only: every keyframe and lattice point remains.
+    coords = [(Decimal(fmt(x)), Decimal(fmt(y))) for x, y in points]
+    absolute = "M" + " ".join(f"{fmt(x)} {fmt(y)}" for x, y in coords)
+    first, *rest = coords
+    deltas, previous = [], first
+    for current in rest:
+        deltas.append(f"{fmt(current[0]-previous[0])} {fmt(current[1]-previous[1])}")
+        previous = current
+    relative = f"M{fmt(first[0])} {fmt(first[1])}l" + " ".join(deltas)
+    return min((absolute, relative), key=len)
 
 
 # --------------------------------------------------------------------------- hero
@@ -280,6 +291,8 @@ def hero(mode: str, still: bool, mobile: bool = False) -> str:
     return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}" role="img" aria-label="{title}">
 <title>{title}</title>
 <defs>
+<g id="lattice-columns">{cols}</g>
+<g id="lattice-rows">{rows}</g>
 <filter id="soft" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="5"/></filter>
 <linearGradient id="fade" x1="{wx0}" x2="{wx1}" gradientUnits="userSpaceOnUse">{stops}</linearGradient>
 <mask id="win" maskUnits="userSpaceOnUse" x="{wx0}" y="{top}" width="{wx1-wx0}" height="{bot-top}"><rect x="{wx0}" y="{top}" width="{wx1 - wx0}" height="{bot - top}" fill="url(#fade)"/></mask>
@@ -290,9 +303,9 @@ def hero(mode: str, still: bool, mobile: bool = False) -> str:
 </defs>
 <rect width="{width}" height="{height}" rx="18" fill="{c["ground"]}"/>
 <g{shift}><g mask="url(#win)">
-<g fill="none" stroke="{c["plane"]}" stroke-width="1.6" stroke-linejoin="round">{cols}</g>
-<g mask="url(#heat)" fill="none" stroke="{c["bronze"]}" stroke-width="2.4" stroke-linejoin="round">{cols}</g>
-<g fill="none" stroke="{c["plane"]}" stroke-width="1.6" stroke-linejoin="round" marker-start="url(#atom)" marker-mid="url(#atom)" marker-end="url(#atom)">{rows}</g>
+<use href="#lattice-columns" fill="none" stroke="{c["plane"]}" stroke-width="1.6" stroke-linejoin="round"/>
+<use href="#lattice-columns" mask="url(#heat)" fill="none" stroke="{c["bronze"]}" stroke-width="2.4" stroke-linejoin="round"/>
+<use href="#lattice-rows" fill="none" stroke="{c["plane"]}" stroke-width="1.6" stroke-linejoin="round" marker-start="url(#atom)" marker-mid="url(#atom)" marker-end="url(#atom)"/>
 <path d="M{wx0} {YS} H{wx1}" stroke="{c["straw"]}" stroke-width="1.6" stroke-dasharray="2 6" stroke-linecap="round"/>
 {cores}
 </g></g>
@@ -310,6 +323,7 @@ def hero(mode: str, still: bool, mobile: bool = False) -> str:
 def main():
     from projects import fig_threadcove, fig_clawtide
     from extras import make_extras
+    from intro_typing import make_typing_assets
     ASSETS.mkdir(exist_ok=True)
     for name, fn in {"hero": hero, "threadcove": fig_threadcove, "clawtide": fig_clawtide}.items():
         for mode in PALETTES:
@@ -319,6 +333,7 @@ def main():
                     path.write_text(fn(mode, still, mobile), encoding="utf-8")
                     print(f"{path.name}: {path.stat().st_size / 1024:.1f} KB")
     make_extras(ASSETS)
+    make_typing_assets(ASSETS)
 
 if __name__ == "__main__":
     main()

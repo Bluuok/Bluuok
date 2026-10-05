@@ -223,94 +223,99 @@ def _output(x, y, w, h, label, sublabel, c, mobile=False):
 
 def _claw_desktop(c, still):
     parts = []
-    hx, hy, hw, hh = 338, 159, 248, 88
-    cy = hy + hh / 2
-    actual = [("Browser", 109), ("Telegram", 141), ("Feishu", 173)]
-    planned = [("QQ", 241), ("DingTalk", 263), ("WeChat", 285),
-               ("Discord", 307), ("WhatsApp", 329)]
-    parts.append(text("已接入 / 入口", 36, 89, 13.5, c, "straw", 560))
-    parts.append(text("规划接入 · Planned", 36, 218, 13.5, c, "muted", 560))
-    for i, (label, y) in enumerate(actual):
-        route = f"M210 {y} C278 {y} 286 {cy} {hx} {cy}"
+    cy = 200
+    for i, label in enumerate(CLAW_CHANNELS):
+        y = 111 + i * 39
+        route = f"M166 {y} C214 {y} 214 {cy} 247 {cy}"
         parts.append(link(f"ct-in-{i}", route, c, "straw"))
-        parts.append(f'<circle cx="210" cy="{y}" r="3.5" fill="{c["straw"]}"/>')
-        parts.append(text(label, 194, y + 6, 17, c, "text", 480, "end"))
-    parts.append(text("需事件订阅配置", 194, 197, 13.5, c, "straw", 550, "end"))
-    for i, (label, y) in enumerate(planned):
-        route = f"M210 {y} C278 {y} 286 {cy} {hx} {cy}"
-        parts.append(link(f"ct-planned-{i}", route, c, "muted", dashed=True, width=1.2))
-        parts.append(text(label, 194, y + 5, 15.5, c, "muted", 420, "end"))
-    outputs = [(685, 120, 180, 66, "会话回复", "回到当前入口"),
-               (685, 237, 180, 66, "执行记录", "结果与错误可追溯")]
+        parts.append(f'<circle cx="166" cy="{y}" r="3.5" fill="{c["straw"]}"/>')
+        parts.append(_channel_label(label, 151, y + 6, 17, i, c, still, "end"))
+    parts.append(link("ct-adapter-runtime", "M419 200 H459", c, "straw", arrow=True))
+    parts.append(_adapter(247, 156, 172, 88, c))
+    outputs = [(735, 111, 137, 70, "会话回复", "回到当前入口"),
+               (735, 237, 137, 70, "执行记录", "结果与错误可追溯")]
     for j, (x, y, ow, oh, label, sublabel) in enumerate(outputs):
         oy = y + oh / 2
-        route = f"M{hx + hw} {cy} C630 {cy} 643 {oy} {x} {oy}"
+        route = f"M685 {cy} C712 {cy} 709 {oy} {x} {oy}"
         parts.append(link(f"ct-out-{j}", route, c, "blue", arrow=True))
         parts.append(_output(x, y, ow, oh, label, sublabel, c))
-    parts.append(_hub(hx, hy, hw, hh, c))
-    parts.append(text("计划任务经同一 Runtime 执行", hx + hw / 2, 290, 14, c,
-                      "muted", anchor="middle"))
-    parts.append(text("自托管 · 示意动画 · 非屏幕录制", hx + hw / 2, 319, 13.5,
-                      c, "muted", anchor="middle"))
-    # Only current entry points carry messages. Planned adapters are always still.
+    parts.append(_hub(465, 156, 220, 88, c))
+    parts.append(text("计划任务经同一 Runtime 执行", 247, 291, 14.5, c, "muted"))
+    parts.append(text("六种 IM · 渠道适配层 · 流程示意，非屏幕录制", 247, 324, 14,
+                      c, "muted"))
     if not still:
-        for i in range(3):
-            start = i * 3.0
-            parts.append(message(f"ct-in-{i}", c, "straw", 9, start + 0.08, start + 0.85))
-            parts.append(message(f"ct-out-{i % 2}", c, "blue", 9, start + 1.0, start + 1.8))
-            parts.append(message(f"ct-in-{i}", c, "blue", 9, start + 2.0, start + 2.75,
-                                 reverse=True))
+        parts.append(_claw_messages(c, "ct"))
     return "".join(parts)
 
 
 def _claw_mobile(c, still):
     parts = []
-    # Grouping the channels preserves readable labels at a phone's 350px width.
-    parts.append(text("已接入 / 入口", 29, 109, 18, c, "straw", 570))
-    parts.append(text("规划接入 · Planned", 321, 109, 18, c, "muted", 570))
-    parts.append(panel(28, 125, 252, 171, c, "straw"))
-    parts.append(panel(320, 125, 252, 171, c, "muted", dashed=True))
-    for i, (label, baseline) in enumerate([("Browser", 159), ("Telegram", 201), ("Feishu", 243)]):
-        glyph = ST.path(label, 53, baseline, 20, "plex", {"wght": 480})
-        active = "" if still else disc("fill", 9, c["text"],
-                                      [(i * 3, c["straw"]), (i * 3 + 2.8, c["text"])])
-        parts.append(f'<circle cx="43" cy="{baseline - 7}" r="3.5" fill="{c["straw"]}"/>')
-        parts.append(f'<path fill="{c["text"]}" d="{glyph}">{active}</path>')
-    parts.append(text("需事件订阅配置", 53, 268, 16, c, "straw", 550))
-    for label, baseline in [("QQ", 155), ("DingTalk", 183), ("WeChat", 211),
-                            ("Discord", 239), ("WhatsApp", 267)]:
-        parts.append(text(label, 346, baseline, 19, c, "muted", 430))
-    parts.append(link("ct-mobile-in", "M154 296 C154 322 232 320 232 344", c, "straw", arrow=True))
-    parts.append(link("ct-mobile-planned", "M446 296 C446 322 368 320 368 344", c,
-                      "muted", dashed=True, arrow=True))
-    parts.append(link("ct-mobile-out-0", "M248 438 C248 449 154 449 154 465", c, "blue", arrow=True))
-    parts.append(link("ct-mobile-out-1", "M352 438 C352 449 446 449 446 465", c, "blue", arrow=True))
-    parts.append(_hub(140, 344, 320, 94, c, mobile=True))
-    parts.append(_output(28, 465, 252, 62, "会话回复", "回到当前入口", c, mobile=True))
-    parts.append(_output(320, 465, 252, 62, "执行记录", "结果与错误可追溯", c, mobile=True))
-    parts.append(text("计划任务经同一 Runtime 执行 · 架构示意", 30, 550, 15,
+    for i, label in enumerate(CLAW_CHANNELS):
+        y = 119 + i * 33
+        route = f"M173 {y} C263 {y} 267 201 340 201"
+        parts.append(link(f"ct-mobile-in-{i}", route, c, "straw"))
+        parts.append(f'<circle cx="173" cy="{y}" r="3.5" fill="{c["straw"]}"/>')
+        parts.append(_channel_label(label, 158, y + 7, 20, i, c, still, "end"))
+    parts.append(link("ct-mobile-adapter-runtime", "M456 242 C456 300 300 285 300 341",
+                      c, "straw", arrow=True))
+    parts.append(_adapter(340, 160, 232, 82, c, mobile=True))
+    parts.append(text("六种 IM · 同一工作区", 30, 324, 16, c, "muted"))
+    parts.append(link("ct-mobile-out-0", "M248 436 C248 450 154 450 154 467", c, "blue", arrow=True))
+    parts.append(link("ct-mobile-out-1", "M352 436 C352 450 446 450 446 467", c, "blue", arrow=True))
+    parts.append(_hub(140, 342, 320, 94, c, mobile=True))
+    parts.append(_output(28, 467, 252, 62, "会话回复", "回到当前入口", c, mobile=True))
+    parts.append(_output(320, 467, 252, 62, "执行记录", "结果与错误可追溯", c, mobile=True))
+    parts.append(text("计划任务经同一 Runtime 执行 · 流程示意，非屏录", 30, 552, 14,
                       c, "muted"))
     if not still:
-        for i in range(3):
-            start = i * 3.0
-            parts.append(message("ct-mobile-in", c, "straw", 9, start + 0.08, start + 0.85))
-            parts.append(message(f"ct-mobile-out-{i % 2}", c, "blue", 9, start + 1.0, start + 1.8))
-            parts.append(message("ct-mobile-in", c, "blue", 9, start + 2.0, start + 2.75,
-                                 reverse=True))
+        parts.append(_claw_messages(c, "ct-mobile"))
+    return "".join(parts)
+
+
+CLAW_CHANNELS = ("Telegram", "Feishu", "QQ", "DingTalk", "WeChat", "Discord")
+
+
+def _channel_label(label, x, y, size, index, c, still, anchor):
+    glyph = ST.path(label, x, y, size, "plex", {"wght": 480}, anchor=anchor)
+    active = "" if still else disc("fill", 12, c["text"],
+                                  [(index * 2, c["straw"]), (index * 2 + 1.95, c["text"])])
+    return f'<path fill="{c["text"]}" d="{glyph}">{active}</path>'
+
+
+def _adapter(x, y, w, h, c, mobile=False):
+    return "".join([
+        panel(x, y, w, h, c, "straw"),
+        text("渠道适配层", x + w / 2, y + 35, 21 if mobile else 18,
+             c, weight=600, anchor="middle"),
+        text("channel adapters", x + w / 2, y + 62, 17 if mobile else 14,
+             c, "muted", anchor="middle"),
+    ])
+
+
+def _claw_messages(c, prefix):
+    parts = []
+    for i in range(len(CLAW_CHANNELS)):
+        start = i * 2.0
+        parts.append(message(f"{prefix}-in-{i}", c, "straw", 12, start + 0.05, start + 0.6))
+        parts.append(message(f"{prefix}-adapter-runtime", c, "straw", 12, start + 0.7, start + 1.05))
+        parts.append(message(f"{prefix}-out-{i % 2}", c, "blue", 12, start + 1.15, start + 1.55))
+        parts.append(message(f"{prefix}-adapter-runtime", c, "blue", 12, start + 1.6, start + 1.72,
+                             reverse=True))
+        parts.append(message(f"{prefix}-in-{i}", c, "blue", 12, start + 1.76, start + 1.94,
+                             reverse=True))
     return "".join(parts)
 
 
 def fig_clawtide(mode: str, still: bool, mobile: bool = False) -> str:
-    """Current Browser/Telegram/Feishu routes plus five clearly planned IM routes."""
+    """Six IM channels share adapters and the Clawtide runtime."""
     c = PALETTES[mode]
     w, h = (600, 560) if mobile else (900, 360)
     title = "Clawtide — self-hosted AI digital employee workspace"
     description = (
-        "Architecture illustration, not a screen recording. Current entries: Browser, "
-        "Telegram, and Feishu. Feishu event delivery needs event subscription configuration. "
-        "Planned adapters: QQ, DingTalk, WeChat, Discord, WhatsApp. Planned paths are gray "
-        "and dashed and never animate messages. Clawtide has roles, independent workspaces, "
-        "continuous sessions, scheduled tasks, and execution records."
+        "Architecture illustration, not a screen recording. Telegram, Feishu, QQ, DingTalk, "
+        "WeChat and Discord share a channel adapter layer leading to the Clawtide runtime. "
+        "Clawtide has roles, independent workspaces, continuous sessions, conversation replies "
+        "and execution records. Scheduled tasks execute through the same runtime."
     )
     parts = [text("Clawtide", 32, 43, 28 if mobile else 26, c,
                   weight=720, font="archivo")]
@@ -318,10 +323,6 @@ def fig_clawtide(mode: str, still: bool, mobile: bool = False) -> str:
     if mobile:
         parts.append(_claw_mobile(c, still))
     else:
-        # Status is a large visible legend, not an asterisk under the image.
-        parts.append(link("legend-connected", "M615 36 H651", c, "straw", width=2.2))
-        parts.append(text("Connected", 660, 41, 14, c, "text", 500))
-        parts.append(link("legend-planned", "M760 36 H796", c, "muted", dashed=True, width=1.6))
-        parts.append(text("Planned", 805, 41, 14, c, "muted", 500))
+        parts.append(text("6 IM · 1 workspace", 868, 43, 14, c, "muted", anchor="end"))
         parts.append(_claw_desktop(c, still))
     return frame(w, h, c, title, description, "".join(parts))

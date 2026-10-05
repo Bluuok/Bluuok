@@ -8,4 +8,8 @@ Outlined lettering uses Archivo, IBM Plex Sans and Noto Sans SC from [google/fon
 
 Clawtide is a secondary development project based on HappyClaw's mechanism design, with its architecture reimplemented. Its [MIT license and upstream attribution](https://github.com/Bluuok/Clawtide/blob/main/LICENSE) preserve Copyright (c) 2025 riba2534. This profile does not change either project's license.
 
-Project animations are architecture illustrations, not screen recordings. Planned IM channels are distinguished from connected channels in both the diagrams and README. No actual messages, accounts, tokens or private runtime data are included.
+Project animations are workflow illustrations, not screen recordings. The six Clawtide channel names reflect the profile owner's current implementation information. This artwork is not evidence of an end-to-end test of each channel. No actual messages, accounts, tokens or private runtime data are included.
+
+The rotating typewriter introduction adapts the interaction of [lora-sys/lora-sys](https://github.com/lora-sys/lora-sys), with permission confirmed by the profile owner. Its text describes Bluuok's own work. The SVG is stored in this repository and does not depend on an external typing service or JavaScript in the README.
+
+The contribution snake is generated with the same official [Platane/snk](https://github.com/Platane/snk) generator and palette as the reference. See [design/snake-NOTICE.md](design/snake-NOTICE.md) for the official public usage instructions and pinned generator source. The generator source is not redistributed in this repository.

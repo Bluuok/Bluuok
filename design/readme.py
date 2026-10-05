@@ -14,7 +14,8 @@ def picture(name,alt,mobile=True,animated=True):
         sources.append(f'  <source media="{device}(prefers-color-scheme: dark)" srcset="{RAW}{prefix}-dark.svg" />')
         if small:
             sources.append(f'  <source media="(max-width: 600px)" srcset="{RAW}{prefix}-light.svg" />')
-    sources.append(f'  <img width="100%" alt="{alt}" src="{RAW}{name}-light.svg" />')
+    priority=' fetchpriority="high" loading="eager"' if name=='hero' else ''
+    sources.append(f'  <img width="100%"{priority} alt="{alt}" src="{RAW}{name}-light.svg" />')
     return '<picture>\n'+'\n'.join(sources)+'\n</picture>'
 
 def badge(name,label,link=None):
@@ -23,10 +24,11 @@ def badge(name,label,link=None):
 
 def main():
     hero=picture('hero','Bluuok：AI 应用与 Agent 工作台。金属晶格逐步移动，持续把问题变成可用工具。')
+    intro=picture('typing','三段轮换简介：我是 Bluu，做 AI 应用与开发者工具。让问题、资料与执行，留在同一条研究线上。维护 ThreadCove、Clawtide，参与开源贡献。')
     thread=picture('threadcove','ThreadCove 架构示意：提出问题，在连续对话中按需搜索、阅读网页和协作子任务，将资料与成果保存在当前研究档案。研究工具由 Pi 后端提供。')
-    claw=picture('clawtide','Clawtide 架构示意：Web、Telegram 和飞书进入数字员工工作区，执行并留下会话及记录。飞书需配置事件订阅；QQ、钉钉、微信、Discord、WhatsApp 为规划接入，灰色虚线不代表可用。')
+    claw=picture('clawtide','Clawtide 工作流程示意：Telegram、飞书、QQ、钉钉、微信、Discord 经渠道适配层进入数字员工工作区，执行并留下会话回复及记录。')
     stats=picture('folio-stats','3 个 Folio PR 已合并、1 个上游项目、2 个重点项目。',animated=False)
-    calendar=picture('contributions','Bluuok 公开贡献图，2026-10-05 快照，装饰性蛇形动画。',mobile=False)
+    calendar=picture('contributions','Bluuok 公开贡献图贪吃蛇：方块蛇吃掉贡献格并在下方汇集色块，使用与参考主页相同的 Platane/snk 生成器。2026-10-05 快照。',mobile=False)
     header='\n  '.join([badge('featured-threadcove','Featured: ThreadCove','https://github.com/Bluuok/ThreadCove'),badge('featured-clawtide','Featured: Clawtide','https://github.com/Bluuok/Clawtide'),badge('header-merged','Folio: 3 merged PRs','#open-source-contributions')])
     tech='\n  '.join(badge(n,n.title()) for n in ['typescript','react','electron','bun','node','hono','sqlite','mcp'])
     text=f'''{hero}
@@ -35,7 +37,14 @@ def main():
   {header}
 </p>
 
-我是 **Bluu**，关注 AI 应用、Agent 工作流和开发者工具。喜欢把零散的问题、资料与执行过程，整理成能运行、能追溯、能继续迭代的工作台。
+{intro}
+
+<details>
+<summary>文字简介</summary>
+
+我是 **Bluu**，做 AI 应用与开发者工具。让问题、资料与执行，留在同一条研究线上。维护 ThreadCove、Clawtide，参与开源贡献。
+
+</details>
 
 - 维护 [ThreadCove](https://github.com/Bluuok/ThreadCove)，让连续对话、资料检索、子任务协作与研究档案留在同一处。
 - 开发 [Clawtide](https://github.com/Bluuok/Clawtide)，一个可自托管的 AI 数字员工工作台，基于 HappyClaw 的机制设计进行二次开发。
@@ -63,8 +72,8 @@ def main():
 
 将角色、独立工作区、连续会话、计划任务和执行记录组织在一起，让任务有明确入口，也有可回看的结果。
 
-- **已接入**：Web、Telegram；飞书已验证长连接，消息事件投递需要配置事件订阅。
-- **规划接入**：QQ、钉钉、微信、Discord、WhatsApp；目前为适配骨架与 mock 测试，尚不代表可用渠道。
+- **六种 IM**：Telegram、飞书、QQ、钉钉、微信、Discord，经渠道适配层进入同一工作台。
+- **连续工作**：角色与独立工作区组织任务，连续会话保留上下文。
 - **执行与记录**：Claude Agent SDK 连接工作区和会话，计划任务经同一 Runtime 执行并保存结果。
 
 <sub>动图为架构流程示意。Clawtide 基于 [HappyClaw](https://github.com/riba2534/HappyClaw) 的机制设计进行二次开发并重新实现架构，保留上游 [MIT 版权与来源声明](https://github.com/Bluuok/Clawtide/blob/main/LICENSE)。</sub>
@@ -97,7 +106,7 @@ def main():
 
 {calendar}
 
-<sub>基于 Bluuok 的公开 GitHub 贡献图，快照日期 2026-10-05；蛇形轨迹为装饰动画。深浅色和减少动态效果模式均有对应版本。[图形生成源码](design/build.py) · [素材来源与许可](NOTICE.md)</sub>
+<sub>基于 Bluuok 的公开 GitHub 贡献图，快照日期 2026-10-05；使用与参考主页相同的 [Platane/snk](https://github.com/Platane/snk) 生成器和配色，吃掉贡献格并收集色块。深浅色和减少动态效果模式均有对应版本。[图形生成源码](design/snake.mjs) · [素材来源与许可](NOTICE.md)</sub>
 
 ---
 

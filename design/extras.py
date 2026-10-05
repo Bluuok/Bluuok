@@ -1,9 +1,7 @@
-"""Original profile badges and a snapshot-based contribution calendar.
+"""Original profile badges and verified Folio statistics.
 
-The snake is decorative and follows calendar cells; it does not invent activity.
+Contribution snake artwork is generated separately by snake.mjs.
 """
-import json
-from pathlib import Path
 import svgtext as ST
 
 PALETTES = {
@@ -31,29 +29,6 @@ def folio_stats(mode,mobile=False):
         if i: body+=f'<path d="M{i*w/3} 28 V100" stroke="{c["plane"]}"/>'
     return frame(w,h,'3 merged Folio PRs, 1 upstream project, 2 featured projects',body)
 
-def calendar(mode,still=False):
-    c=PALETTES[mode]
-    data=json.loads((Path(__file__).parent/'contributions.json').read_text(encoding='utf-8'))
-    colors=[c['plane'], '#335F88' if mode=='dark' else '#98B8D4', '#477CA9' if mode=='dark' else '#6E98BC', c['blue'], c['straw']]
-    levels=['NONE','FIRST_QUARTILE','SECOND_QUARTILE','THIRD_QUARTILE','FOURTH_QUARTILE']
-    body=f'<rect width="900" height="192" rx="14" fill="{c["ground"]}"/>'
-    points=[]
-    for x,week in enumerate(data['weeks']):
-        for y,day in enumerate(week['contributionDays']):
-            cx,cy=28+x*16,20+y*16
-            color=colors[levels.index(day['contributionLevel'])]
-            body+=f'<rect x="{cx}" y="{cy}" width="12" height="12" rx="2" fill="{color}"><title>{day["date"]}: {day["contributionCount"]} contributions</title></rect>'
-        rows=range(len(week['contributionDays'])) if x%2==0 else reversed(range(len(week['contributionDays'])))
-        points.extend((34+x*16,26+y*16) for y in rows)
-    if not still:
-        d='M'+' L'.join(f'{x} {y}' for x,y in points)
-        body+=f'<path id="snake-path" d="{d}" fill="none"/>'
-        for k in range(4,-1,-1):
-            body+=f'<circle r="{5.8 if k==0 else 5.2}" fill="{c["straw"] if k==0 else c["blue"]}" opacity="{1-k*.12}"><animateMotion dur="42s" begin="-{42-k*.09:.2f}s" repeatCount="indefinite" calcMode="paced"><mpath href="#snake-path"/></animateMotion></circle>'
-    body+=txt('Bluuok / contribution calendar',28,159,19,c['text'],550)
-    body+=txt('Public GitHub snapshot · 2026-10-05',28,181,14,c['muted'])
-    return frame(900,192,'Bluuok public contribution calendar snapshot on 2026-10-05; decorative snake animation',body)
-
 def make_extras(assets):
     badges={'featured-threadcove':('Featured · ThreadCove','#A45220'),'featured-clawtide':('Featured · Clawtide','#2D5FB8'),'header-merged':('Folio · 3 merged PRs','#6E44A0'),'typescript':('TypeScript','#3178C6'),'react':('React','#287A8A'),'electron':('Electron','#47848F'),'bun':('Bun','#665B50'),'node':('Node.js','#4E853C'),'hono':('Hono','#B45422'),'sqlite':('SQLite','#36658B'),'mcp':('MCP','#6E44A0')}
     for name,(label,color) in badges.items():
@@ -61,5 +36,3 @@ def make_extras(assets):
     for mode in PALETTES:
         for mobile in (False,True):
             (assets/f'folio-stats{"-mobile" if mobile else ""}-{mode}.svg').write_text(folio_stats(mode,mobile),encoding='utf-8')
-        for still in (False,True):
-            (assets/f'contributions-{mode}{"-still" if still else ""}.svg').write_text(calendar(mode,still),encoding='utf-8')
