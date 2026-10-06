@@ -88,7 +88,7 @@ const captured = cells.at(-1).date;
 const metrics = { source: sourceDir, days: cells.length, activeDays: cells.filter(c => c.level > 0).length,
   totalContributions: snapshot.totalContributions, steps: chain.length, stepMs: 100, loopMs: chain.length * 100, assets: [] };
 for (const [theme, palette] of Object.entries(palettes)) {
-  // Exactly the reference workflow options, parsed by the official generator.
+  // Workflow options, parsed by the official generator.
   const settings = options.parseEntry(`snake.svg?palette=github-${theme}&color_snake=${palette.snake}&color_dots=${palette.dots}`);
   let artwork = svg.createSvg(grid, cells, chain, settings.drawOptions, settings.animationOptions);
   artwork = artwork.replace('<desc>', `<title>Bluuok contribution graph, eaten by a snake</title><desc>`)

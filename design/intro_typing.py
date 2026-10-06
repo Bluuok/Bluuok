@@ -32,8 +32,8 @@ MOBILE_ROWS = (
     ("维护 ThreadCove / Clawtide，", "参与开源贡献。"),
 )
 PALETTES = {
-    "dark": {"text": "#8EBDC8", "cursor": "#8EBDC8"},
-    "light": {"text": "#365E73", "cursor": "#365E73"},
+    "dark": {"text": "#D6B37A", "cursor": "#D6B37A"},
+    "light": {"text": "#8A5A2B", "cursor": "#8A5A2B"},
 }
 CYCLE = 24.0
 SLOT = 8.0

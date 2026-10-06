@@ -1,8 +1,7 @@
 """Project workflow figures for Bluuok's GitHub profile.
 
 These are architecture illustrations using synthetic example text, not recordings.
-The visual system and SMIL helpers follow sclfcz's authorized profile reference;
-project content and layouts are specific to ThreadCove and Clawtide. Text is
+Project content and layouts are specific to ThreadCove and Clawtide. Text is
 outlined by svgtext so the figures do not need network fonts on GitHub.
 
 Public interface: fig_threadcove(mode, still, mobile=False) and

@@ -18,14 +18,14 @@
 我研究材料，也从原子逐排移动的过程得到启发：构建软件同样需要一步步推进，每一步都经过验证。
 
 <picture>
-  <source media="(max-width: 600px) and (prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-mobile-dark-still.svg" />
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-mobile-light-still.svg" />
-  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-mobile-dark.svg" />
-  <source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-mobile-light.svg" />
-  <source media="(prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-dark-still.svg" />
-  <source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-light-still.svg" />
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-dark.svg" />
-  <img width="100%" alt="三段轮换简介：我是 Bluu，做 AI 应用与开发者工具。让问题、资料与执行，留在同一条研究线上。维护 ThreadCove、Clawtide，参与开源贡献。" src="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-light.svg" />
+  <source media="(max-width: 600px) and (prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-mobile-dark-still.svg?v=warm-20261006" />
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-mobile-light-still.svg?v=warm-20261006" />
+  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-mobile-dark.svg?v=warm-20261006" />
+  <source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-mobile-light.svg?v=warm-20261006" />
+  <source media="(prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-dark-still.svg?v=warm-20261006" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-light-still.svg?v=warm-20261006" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-dark.svg?v=warm-20261006" />
+  <img width="100%" alt="三段轮换简介：我是 Bluu，做 AI 应用与开发者工具。让问题、资料与执行，留在同一条研究线上。维护 ThreadCove、Clawtide，参与开源贡献。" src="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-light.svg?v=warm-20261006" />
 </picture>
 
 <details>
@@ -36,7 +36,7 @@
 </details>
 
 - 维护 [ThreadCove](https://github.com/Bluuok/ThreadCove)，让连续对话、资料检索、子任务协作与研究档案留在同一处。
-- 开发 [Clawtide](https://github.com/Bluuok/Clawtide)，一个可自托管的 AI 数字员工工作台，基于 HappyClaw 的机制设计进行二次开发。
+- 开发 [Clawtide](https://github.com/Bluuok/Clawtide)，一个可自托管的 AI 数字员工工作台。
 - 参与 [helsome/folio](https://github.com/helsome/folio) 与字节跳动的 [DeerFlow](https://github.com/bytedance/deer-flow) 开源贡献，已有 **5 个 PR 合并到上游**。
 
 ## Featured projects
@@ -62,7 +62,7 @@
 - **独立档案**：每项研究保留独立会话和文件目录，支持归档与继续研究。
 - **桌面 + Web**：共用研究工作台与事件协议；Pi、DeepSeek、Claude 适配的能力各有差异。
 
-<sub>动图为架构流程示意，使用合成问题；不代表每次执行都经过全部步骤。[查看项目实际界面](https://github.com/Bluuok/ThreadCove#产品预览)。</sub>
+[查看项目实际界面](https://github.com/Bluuok/ThreadCove#产品预览)
 
 ### [Clawtide](https://github.com/Bluuok/Clawtide) · 可自托管的 AI 数字员工
 
@@ -82,8 +82,6 @@
 - **六种 IM**：Telegram、飞书、QQ、钉钉、微信、Discord，经渠道适配层进入同一工作台。
 - **连续工作**：角色与独立工作区组织任务，连续会话保留上下文。
 - **执行与记录**：Claude Agent SDK 连接工作区和会话，计划任务经同一 Runtime 执行并保存结果。
-
-<sub>动图为架构流程示意。Clawtide 基于 [HappyClaw](https://github.com/riba2534/HappyClaw) 的机制设计进行二次开发并重新实现架构，保留上游 [MIT 版权与来源声明](https://github.com/Bluuok/Clawtide/blob/main/LICENSE)。</sub>
 
 ## Open-source contributions
 
@@ -114,8 +112,6 @@
 - [#6192](https://github.com/bytedance/deer-flow/pull/6192) · 修正开发指南中的本地日志位置。
 - [#6193](https://github.com/bytedance/deer-flow/pull/6193) · 修正技能切换 API、管理员限制及状态范围的文档说明。
 
-<sub>Folio 合并记录核对于 2026-10-05，DeerFlow 核对于 2026-10-06；统计范围仅为上表两个上游项目。DeerFlow 两条贡献均为文档说明修正。</sub>
-
 ## Tech
 
 <p align="center">
@@ -135,13 +131,9 @@
   <source media="(prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/contributions-dark-still.svg" />
   <source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/contributions-light-still.svg" />
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/contributions-dark.svg" />
-  <img width="100%" alt="Bluuok 公开贡献图贪吃蛇：方块蛇吃掉贡献格并在下方汇集色块，使用与参考主页相同的 Platane/snk 生成器。2026-10-05 快照。" src="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/contributions-light.svg" />
+  <img width="100%" alt="Bluuok 公开贡献图贪吃蛇：方块蛇吃掉贡献格并在下方汇集色块。2026-10-05 快照。" src="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/contributions-light.svg" />
 </picture>
-
-<sub>基于 Bluuok 的公开 GitHub 贡献图，快照日期 2026-10-05；使用与参考主页相同的 [Platane/snk](https://github.com/Platane/snk) 生成器和配色，吃掉贡献格并收集色块。深浅色和减少动态效果模式均有对应版本。[图形生成源码](design/snake.mjs) · [素材来源与许可](NOTICE.md)</sub>
 
 ---
 
 如果这些项目对你有帮助，欢迎留下 issue，或一起把下一个问题做成工具。
-
-<sub>主页视觉与金属晶格动画经作者许可改编自 [sclfcz/sclfcz](https://github.com/sclfcz/sclfcz)。</sub>

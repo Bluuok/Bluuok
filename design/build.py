@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""Generate Bluuok profile artwork. Adapted with permission from sclfcz/sclfcz.
-Source commit: aff2e7229393f7bee5f6fc8baae5c9749da02591.
-Reuse permission is specific to this profile; see NOTICE.md.
+"""Generate Bluuok profile artwork.
 
     python3 design/build.py
 

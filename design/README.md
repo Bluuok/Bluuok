@@ -1,6 +1,6 @@
 # Rebuilding the profile artwork
 
-The checked-in SVGs work without any runtime service, GitHub secret or scheduled workflow. The generator is based on the authorized reference described in [NOTICE.md](../NOTICE.md).
+The checked-in SVGs work without any runtime service, GitHub secret or scheduled workflow.
 
 Use Python 3.12 or newer and install `fonttools` and `uharfbuzz` in an isolated environment. Download these fonts from the `google/fonts` repository into `design/fonts/`:
 
@@ -17,6 +17,6 @@ python design/build.py
 python design/readme.py
 ```
 
-The hero retains the reference's 15-second crystal dislocation loop and all keyframes. Repeated lattice columns share a definition, and paths use equivalent shorter coordinate encodings. The project illustrations loop in 12 seconds (ThreadCove) and use a six-channel cycle for Clawtide. Each has desktop, mobile, light, dark and static variants. The typewriter shows one paragraph at a time, types and deletes whole characters, then rotates to the next paragraph. `<picture>` selects static artwork when the viewer prefers reduced motion. Lettering is outlined; SVGs need no external fonts or scripts.
+The hero uses a 15-second crystal dislocation loop. Repeated lattice columns share a definition, and paths use equivalent shorter coordinate encodings. The project illustrations loop in 12 seconds (ThreadCove) and use a six-channel cycle for Clawtide. Each has desktop, mobile, light, dark and static variants. The typewriter shows one paragraph at a time, types and deletes whole characters, then rotates to the next paragraph. `<picture>` selects static artwork when the viewer prefers reduced motion. Lettering is outlined; SVGs need no external fonts or scripts.
 
-`contributions.json` is a public GitHub contribution-calendar snapshot for Bluuok captured on 2026-10-05. The snake uses the same official Platane/snk generator as the reference. Follow [snake-NOTICE.md](snake-NOTICE.md) and run `node design/snake.mjs` with the documented official source checkout and esbuild path to rebuild it. The Python generator leaves these snake assets intact. No scheduled refresh is configured. Folio merge counts and links are manually verified in the README.
+`contributions.json` is a public GitHub contribution-calendar snapshot for Bluuok captured on 2026-10-05. The snake uses the official Platane/snk generator. Follow [snake-NOTICE.md](snake-NOTICE.md) and run `node design/snake.mjs` with the documented official source checkout and esbuild path to rebuild it. The Python generator leaves these snake assets intact. No scheduled refresh is configured. Folio merge counts and links are manually verified in the README.
