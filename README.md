@@ -12,8 +12,10 @@
 <p align="center">
   <a href="https://github.com/Bluuok/ThreadCove"><img alt="Featured: ThreadCove" src="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/badge-featured-threadcove.svg" /></a>
   <a href="https://github.com/Bluuok/Clawtide"><img alt="Featured: Clawtide" src="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/badge-featured-clawtide.svg" /></a>
-  <a href="#open-source-contributions"><img alt="Folio: 3 merged PRs" src="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/badge-header-merged.svg" /></a>
+  <a href="#open-source-contributions"><img alt="Open source: 5 merged PRs" src="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/badge-header-merged.svg" /></a>
 </p>
+
+我研究材料，也从原子逐排移动的过程得到启发：构建软件同样需要一步步推进，每一步都经过验证。
 
 <picture>
   <source media="(max-width: 600px) and (prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/typing-mobile-dark-still.svg" />
@@ -35,7 +37,7 @@
 
 - 维护 [ThreadCove](https://github.com/Bluuok/ThreadCove)，让连续对话、资料检索、子任务协作与研究档案留在同一处。
 - 开发 [Clawtide](https://github.com/Bluuok/Clawtide)，一个可自托管的 AI 数字员工工作台，基于 HappyClaw 的机制设计进行二次开发。
-- 为 [helsome/folio](https://github.com/helsome/folio) 贡献存储并发、Markdown 解析与输入边界修复，已有 **3 个 PR 合并到上游**。
+- 参与 [helsome/folio](https://github.com/helsome/folio) 与字节跳动的 [DeerFlow](https://github.com/bytedance/deer-flow) 开源贡献，已有 **5 个 PR 合并到上游**。
 
 ## Featured projects
 
@@ -91,12 +93,15 @@
   <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/folio-stats-mobile-dark.svg" />
   <source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/folio-stats-mobile-light.svg" />
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/folio-stats-dark.svg" />
-  <img width="100%" alt="3 个 Folio PR 已合并、1 个上游项目、2 个重点项目。" src="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/folio-stats-light.svg" />
+  <img width="100%" alt="5 个 PR 已合并：Folio 3 个、DeerFlow 2 个；2 个上游项目；2 个重点项目。" src="https://raw.githubusercontent.com/Bluuok/Bluuok/main/assets/folio-stats-light.svg" />
 </picture>
 
 | 上游项目 | 已合并 | 贡献内容 |
 | :--- | :---: | :--- |
 | [helsome/folio](https://github.com/helsome/folio) | **3** | 存储并发、Markdown 解析、输入边界 |
+| [bytedance/deer-flow](https://github.com/bytedance/deer-flow) | **2** | 开发日志文档、技能 API 与状态范围说明 |
+
+### Folio
 
 - [#109](https://github.com/helsome/folio/pull/109) · 修复并发 JSON 写入，隔离临时文件。
 - [#110](https://github.com/helsome/folio/pull/110) · 修复嵌套 Markdown 代码围栏与 CRLF 解析。
@@ -104,7 +109,12 @@
 
 [查看开放 PR](https://github.com/helsome/folio/pulls?q=is%3Apr+is%3Aopen+author%3ABluuok)
 
-<sub>合并记录核对于 2026-10-05，统计范围仅为上表 Folio 项目。</sub>
+### DeerFlow
+
+- [#6192](https://github.com/bytedance/deer-flow/pull/6192) · 修正开发指南中的本地日志位置。
+- [#6193](https://github.com/bytedance/deer-flow/pull/6193) · 修正技能切换 API、管理员限制及状态范围的文档说明。
+
+<sub>Folio 合并记录核对于 2026-10-05，DeerFlow 核对于 2026-10-06；统计范围仅为上表两个上游项目。DeerFlow 两条贡献均为文档说明修正。</sub>
 
 ## Tech
 

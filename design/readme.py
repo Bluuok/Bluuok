@@ -27,15 +27,17 @@ def main():
     intro=picture('typing','三段轮换简介：我是 Bluu，做 AI 应用与开发者工具。让问题、资料与执行，留在同一条研究线上。维护 ThreadCove、Clawtide，参与开源贡献。')
     thread=picture('threadcove','ThreadCove 架构示意：提出问题，在连续对话中按需搜索、阅读网页和协作子任务，将资料与成果保存在当前研究档案。研究工具由 Pi 后端提供。')
     claw=picture('clawtide','Clawtide 工作流程示意：Telegram、飞书、QQ、钉钉、微信、Discord 经渠道适配层进入数字员工工作区，执行并留下会话回复及记录。')
-    stats=picture('folio-stats','3 个 Folio PR 已合并、1 个上游项目、2 个重点项目。',animated=False)
+    stats=picture('folio-stats','5 个 PR 已合并：Folio 3 个、DeerFlow 2 个；2 个上游项目；2 个重点项目。',animated=False)
     calendar=picture('contributions','Bluuok 公开贡献图贪吃蛇：方块蛇吃掉贡献格并在下方汇集色块，使用与参考主页相同的 Platane/snk 生成器。2026-10-05 快照。',mobile=False)
-    header='\n  '.join([badge('featured-threadcove','Featured: ThreadCove','https://github.com/Bluuok/ThreadCove'),badge('featured-clawtide','Featured: Clawtide','https://github.com/Bluuok/Clawtide'),badge('header-merged','Folio: 3 merged PRs','#open-source-contributions')])
+    header='\n  '.join([badge('featured-threadcove','Featured: ThreadCove','https://github.com/Bluuok/ThreadCove'),badge('featured-clawtide','Featured: Clawtide','https://github.com/Bluuok/Clawtide'),badge('header-merged','Open source: 5 merged PRs','#open-source-contributions')])
     tech='\n  '.join(badge(n,n.title()) for n in ['typescript','react','electron','bun','node','hono','sqlite','mcp'])
     text=f'''{hero}
 
 <p align="center">
   {header}
 </p>
+
+我研究材料，也从原子逐排移动的过程得到启发：构建软件同样需要一步步推进，每一步都经过验证。
 
 {intro}
 
@@ -48,7 +50,7 @@ def main():
 
 - 维护 [ThreadCove](https://github.com/Bluuok/ThreadCove)，让连续对话、资料检索、子任务协作与研究档案留在同一处。
 - 开发 [Clawtide](https://github.com/Bluuok/Clawtide)，一个可自托管的 AI 数字员工工作台，基于 HappyClaw 的机制设计进行二次开发。
-- 为 [helsome/folio](https://github.com/helsome/folio) 贡献存储并发、Markdown 解析与输入边界修复，已有 **3 个 PR 合并到上游**。
+- 参与 [helsome/folio](https://github.com/helsome/folio) 与字节跳动的 [DeerFlow](https://github.com/bytedance/deer-flow) 开源贡献，已有 **5 个 PR 合并到上游**。
 
 ## Featured projects
 
@@ -87,6 +89,9 @@ def main():
 | 上游项目 | 已合并 | 贡献内容 |
 | :--- | :---: | :--- |
 | [helsome/folio](https://github.com/helsome/folio) | **3** | 存储并发、Markdown 解析、输入边界 |
+| [bytedance/deer-flow](https://github.com/bytedance/deer-flow) | **2** | 开发日志文档、技能 API 与状态范围说明 |
+
+### Folio
 
 - [#109](https://github.com/helsome/folio/pull/109) · 修复并发 JSON 写入，隔离临时文件。
 - [#110](https://github.com/helsome/folio/pull/110) · 修复嵌套 Markdown 代码围栏与 CRLF 解析。
@@ -94,7 +99,12 @@ def main():
 
 [查看开放 PR](https://github.com/helsome/folio/pulls?q=is%3Apr+is%3Aopen+author%3ABluuok)
 
-<sub>合并记录核对于 2026-10-05，统计范围仅为上表 Folio 项目。</sub>
+### DeerFlow
+
+- [#6192](https://github.com/bytedance/deer-flow/pull/6192) · 修正开发指南中的本地日志位置。
+- [#6193](https://github.com/bytedance/deer-flow/pull/6193) · 修正技能切换 API、管理员限制及状态范围的文档说明。
+
+<sub>Folio 合并记录核对于 2026-10-05，DeerFlow 核对于 2026-10-06；统计范围仅为上表两个上游项目。DeerFlow 两条贡献均为文档说明修正。</sub>
 
 ## Tech
 

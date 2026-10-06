@@ -1,4 +1,4 @@
-"""Original profile badges and verified Folio statistics.
+"""Original profile badges and verified Folio / DeerFlow statistics.
 
 Contribution snake artwork is generated separately by snake.mjs.
 """
@@ -23,14 +23,14 @@ def folio_stats(mode,mobile=False):
     c=PALETTES[mode]
     w,h=(600,128) if mobile else (900,128)
     body=f'<rect width="{w}" height="{h}" rx="14" fill="{c["ground"]}"/>'
-    for i,(n,label) in enumerate([('3','Merged PRs'),('1','Upstream project'),('2','Featured projects')]):
+    for i,(n,label) in enumerate([('5','Merged PRs'),('2','Upstream projects'),('2','Featured projects')]):
         cx=(i+.5)*w/3
         body+=txt(n,cx,58,40,c['text'],650,'middle')+txt(label,cx,94,18,c['muted'],450,'middle')
         if i: body+=f'<path d="M{i*w/3} 28 V100" stroke="{c["plane"]}"/>'
-    return frame(w,h,'3 merged Folio PRs, 1 upstream project, 2 featured projects',body)
+    return frame(w,h,'5 merged PRs: 3 Folio and 2 DeerFlow, 2 upstream projects, 2 featured projects',body)
 
 def make_extras(assets):
-    badges={'featured-threadcove':('Featured · ThreadCove','#A45220'),'featured-clawtide':('Featured · Clawtide','#2D5FB8'),'header-merged':('Folio · 3 merged PRs','#6E44A0'),'typescript':('TypeScript','#3178C6'),'react':('React','#287A8A'),'electron':('Electron','#47848F'),'bun':('Bun','#665B50'),'node':('Node.js','#4E853C'),'hono':('Hono','#B45422'),'sqlite':('SQLite','#36658B'),'mcp':('MCP','#6E44A0')}
+    badges={'featured-threadcove':('Featured · ThreadCove','#A45220'),'featured-clawtide':('Featured · Clawtide','#2D5FB8'),'header-merged':('Open source · 5 merged PRs','#6E44A0'),'typescript':('TypeScript','#3178C6'),'react':('React','#287A8A'),'electron':('Electron','#47848F'),'bun':('Bun','#665B50'),'node':('Node.js','#4E853C'),'hono':('Hono','#B45422'),'sqlite':('SQLite','#36658B'),'mcp':('MCP','#6E44A0')}
     for name,(label,color) in badges.items():
         (assets/f'badge-{name}.svg').write_text(badge(label,color),encoding='utf-8')
     for mode in PALETTES:
